@@ -19,7 +19,7 @@ def display_welcome():
     print("Python fundamentals: variables, expressions,")
     print("statements, and functions.")
     # TODO: Add a blank line after the welcome message
-
+    print()
 
 def calculate_file_size():
     """Calculate and display the size of a specified file."""
@@ -45,8 +45,9 @@ def calculate_file_size():
         
         # Calculate size in different units
         # TODO: Fix the code below to perform floating point division
-        size_kb = size_bytes // 1024
-        size_mb = size_kb // 1024
+        size_kb = size_bytes / 1024
+        size_mb = size_kb / 1024
+        
         
         # Display results
         print(f"\nFile: {filename}")
@@ -75,6 +76,7 @@ def get_user_choice():
     
     choice = input("Enter your choice (help/calc/info/quit): ").strip().lower()
     # TODO: Add code to return the choice
+    return choice
 
 
 def display_help():
@@ -119,8 +121,8 @@ def display_info():
 # 2. goodbye_message defaults to "Thank you for using Python CLI File Manager!"
 # 3. invalid_choice_prefix defaults to "Invalid choice:"
 # 4. valid_commands defaults to "help, calc, info, quit"
-def process_user_command(choice, running, show_goodbye, goodbye_message, 
-                        invalid_choice_prefix, valid_commands):
+def process_user_command(choice, running, show_goodbye= True, goodbye_message = "Thank you for using Python CLI File Manger!" 
+                        ,invalid_choice_prefix ="Invalid choice:",valid_commands =" help, calc info, quit"):
     """
     Process a user command and return the updated running state.
     
@@ -160,9 +162,11 @@ def main():
     """Main program loop."""
     # Display welcome message
     # TODO: Call the function to display the welcome message
+    display_welcome()
     
     # Main command loop
     # TODO: Initialize a variable to control the loop. Hint set running = True
+    running = True
     while running:
         try:
             choice = get_user_choice()
